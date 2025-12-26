@@ -1,28 +1,38 @@
 import { useState } from "react";
-import Screen from "./screen";
-import Controls from "./controls";
-import "../styles/pokedex.css";
+import { getPokemon } from "../services/pokeApi";
 
-export default function Pokedex() {
-  const [pokemon, setPokemon] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+export default function Controls({ setPokemon, setLoading, setError }) {
+  const [query, setQuery] = useState("");
+
+  const handleSearch = async () => {
+    if (!query) return;
+
+    try {
+      setLoading(true);
+      setError("");
+      const data = await getPokemon(query);
+      setPokemon(data);
+    } catch {
+      setError("Pokémon no encontrado");
+      setPokemon(null);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <div className="gba-shell">
-      <div className="screen">
-        <div className="screen-frame">
-          <div className="lcd">
-            <Screen pokemon={pokemon} loading={loading} error={error} />
-          </div>
-        </div>
-      </div>
-
-      <Controls
-        setPokemon={setPokemon}
-        setLoading={setLoading}
-        setError={setError}
+    <div className="controls">
+      <input
+        type="text"
+        placeholder="Buscar"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleSearch()}
       />
+
+      <button onClick={handleSearch} disabled={!query}>
+        A
+      </button>
     </div>
   );
 }

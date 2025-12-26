@@ -11,10 +11,12 @@ export default function Pokedex() {
   return (
     <div className="pokedex">
       <Screen pokemon={pokemon} loading={loading} error={error} />
-      <Controls />
-      setPokemon={setPokemon}
-      setLoading={setLoading}
-      setError={setError}
+
+      <Controls
+        setPokemon={setPokemon}
+        setLoading={setLoading}
+        setError={setError}
+      />
     </div>
   );
 }
