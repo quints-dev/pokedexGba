@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Screen from "./screen";
+import Lcd from "./lcd";
 import Controls from "./controls";
 import "../styles/pokedex.css";
 
@@ -10,7 +10,7 @@ export default function Pokedex() {
 
   return (
     <div className="pokedex">
-      <Screen pokemon={pokemon} loading={loading} error={error} />
+      <Lcd pokemon={pokemon} loading={loading} error={error} />
 
       <Controls
         setPokemon={setPokemon}

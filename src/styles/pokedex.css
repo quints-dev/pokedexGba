@@ -1,3 +1,307 @@
+:root{
+  --poke-red: #dc0a2d;
+  --poke-red-dark: #8b051a;
+  --poke-blue: #28a2fb;
+  --lcd-bg: #9ca04c;
+}
+
+.pokedex {
+  width: 420px;
+  height: 620px;
+  background: var(--poke-red);
+  border-radius: 18px;
+  box-shadow: inset -12px 0 18px rgba(0,0,0,.25), 20px 20px 40px rgba(0,0,0,.45);
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.topBar {
+  height: 110px;
+  background: var(--poke-red);
+  border-bottom: 5px solid var(--poke-red-dark);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 45px,
+    58% 45px,
+    45% 100%,
+    0 100%
+  );
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.innerScreen {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  overflow: hidden; /* Importante para que el LCD no se salga de las curvas */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between; /* Separa D-pad de botón azul */
+  align-items: center;
+  padding: 0 40px;
+  margin-top: 20px;
+}
+
+.bigBlue {
+  width: 70px;
+  height: 70px;
+  background: var(--poke-blue);
+  border-radius: 50%;
+  border: 3px solid #000;
+  box-shadow: 0 6px 0 #1c78bb, 
+              0 8px 10px rgba(0,0,0,0.4);
+}
+
+.bigBlue:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #1c78bb;
+}
+
+.dpad {
+  width: 90px;
+  height: 90px;
+  position: relative;
+}
+
+.dpad .v, .dpad .h {
+  background: #222;
+  position: absolute;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0px #000;
+}
+
+.dpad .v { width: 28px; height: 90px; left: 31px; }
+.dpad .h { width: 90px; height: 28px; top: 31px; }
+
+/* --- ESTILO LCD RETRO --- */
+.lcd {
+  width: 100%;
+  height: 100%;
+  background: #9ca04c; /* Color LCD verdoso de gameboyscreen.js */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: 'monospace'; /* O "Press Start 2P" si la tienes */
+  color: #303010;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.4); /* Profundidad interna */
+}
+
+/* Efecto de líneas de escaneo (Scanlines) para realismo */
+.lcd::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(rgba(0,0,0,0.05) 50%, transparent 50%);
+  background-size: 100% 3px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.lcdHeader {
+  font-size: 10px;
+  text-align: center;
+  border-bottom: 2px solid #303010;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.lcdContent {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.lcdMessage {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+}
+
+.pokemonView {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemonView img {
+  width: 80px;
+  height: 80px;
+  image-rendering: pixelated; /* Mantiene los bordes de los pixeles definidos */
+}
+
+.pokemonName {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.pokemonStats {
+  flex: 1;
+  font-size: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted #303010;
+}
+
+.lcdFooter {
+  margin-top: 8px;
+}
+
+.lcdInput {
+  width: 100%;
+  background: #e8f4e1; /* Fondo claro para el input */
+  border: 2px solid #303010;
+  padding: 5px;
+  font-size: 10px;
+  color: #303010;
+  outline: none;
+}
+
+
+
+.mainBorder {
+  width: 74px;
+  height: 74px;
+  background: #eee;
+  border-radius: 50%;
+  border: 4px solid #bbb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 
+    inset 0 0 8px rgba(0,0,0,.4),
+    0 4px 10px rgba(0,0,0,0.3);
+}
+
+.mainLens {
+  width: 56px;
+  height: 56px;
+  background: radial-gradient(circle at 30% 30%, #b7e4ff, var(--poke-blue) 75%);
+  border-radius: 50%;
+  border: 2px solid #000;
+  position: relative;
+}
+
+.mainLens::after{
+  content: "";
+  position: absolute;
+  top: 10px; left: 10px;
+  width: 14px; height: 8px;
+  background: rgba(255, 255, 255, .6);
+  border-radius: 50%;
+}
+
+.screenContainer{
+  width: 85%;
+  height: 280px;
+  background: #737488;
+  margin: 40px auto 30px;
+  border-radius: 12px 12px 12px 45px;
+  border: 3px solid #555;
+  padding: 25px;
+  box-sizing: border-box;
+  box-shadow: inset 0 -4px 1px #514c65, 
+  inset 0 0 4px 2px rgba(0,0,0,0.5);
+}
+
+.innerScreen{
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  box-shadow: inset 5px 5px 10px rgba(0,0,0,0.4);
+  overflow: hidden;
+  position: relative;
+}
+
+.smallLights {
+  display: flex;
+  gap: 10px;
+  margin-left: 16px;
+}
+
+.subLights{
+  width: 14px;
+  height: 14px;
+  border-radius:50%;
+  box-shadow: inset -1px -1px 3px rgba(0,0,0,.6);
+}
+
+.lightRed{background: #ff4d4d}
+
+.lightYellow{background: #ffd633}
+
+.lightGreen{background: #3cff5a}
+
+
+
+
+.bigBlue{
+  width: 64px;
+  height: 64px;
+  background: var(--poke-blue);
+  border-radius: 50%;
+  border: 3px solid #000;
+  box-shadow: 0 5px 0 #1c78bb;
+}
+
+.bigBlueButton:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #1c78bb;
+}
+
+.dpad{
+  .dpad {
+  width: 90px;
+  height: 90px;
+  position: relative;
+}
+
+.dpad .v,
+.dpad .h {
+  background: #222;
+  position: absolute;
+  border-radius: 6px;
+  box-shadow: inset -2px -2px 4px rgba(0,0,0,.5);
+}
+
+.dpad .v {
+  width: 26px;
+  height: 90px;
+  left: 32px;
+}
+
+.dpad .h {
+  width: 90px;
+  height: 26px;
+  top: 32px;
+}
+
+
+
+}
+
+/*
+
 .lcd {
   aspect-ratio: 3 / 2;
   width: 100%;
@@ -12,14 +316,14 @@
   box-sizing: border-box;
 }
 
-/* HEADER */
+
 .lcd-header {
   text-align: center;
   font-size: 10px;
   margin-bottom: 4px;
 }
 
-/* CONTENIDO */
+
 .lcd-content {
   flex: 1;
   display: grid;
@@ -27,7 +331,7 @@
   gap: 6px;
 }
 
-/* SPRITE */
+
 .pokemon-view {
   display: flex;
   flex-direction: column;
@@ -45,7 +349,7 @@
   text-transform: uppercase;
 }
 
-/* STATS */
+
 .pokemon-stats {
   display: flex;
   flex-direction: column;
@@ -59,7 +363,7 @@
   justify-content: space-between;
 }
 
-/* FOOTER */
+
 .lcd-footer {
   margin-top: 6px;
 }
@@ -71,4 +375,5 @@
   padding: 4px;
   border: 2px inset #6b7d6a;
   background: #e8f4e1;
-}
+} 
+
