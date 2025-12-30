@@ -84,3 +84,6 @@ Crear una pieza visualmente distintiva para portafolio.
 🚧 Abierto a mejoras visuales y animaciones
 
 USAR npm install -> npm run dev
+
+Cruceta direccional = reinicio 
+Boton azul = busqueda del pokémon
