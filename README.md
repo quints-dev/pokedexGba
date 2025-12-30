@@ -1,16 +1,86 @@
-# React + Vite
+📟 Pokédex Retro (Game Boy Advance Style)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto Pokédex inspirado en la estética de la Pokédex clásica y la pantalla de Game Boy Advance, desarrollado como ejercicio de front-end y consumo de APIs, con foco en UI retro y arquitectura limpia en React.
 
-Currently, two official plugins are available:
+🚀 Tecnologías utilizadas
+🧠 Front-End
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React
+Librería principal para la construcción de la interfaz, manejo de estado y composición de componentes.
 
-## React Compiler
+JavaScript (ES6+)
+Lógica de la aplicación, manejo de eventos y consumo de API.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+HTML5 (JSX)
+Estructura semántica de los componentes en React.
 
-## Expanding the ESLint configuration
+🎨 Estilos
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+CSS3 puro
+
+Diseño completo de la Pokédex (carcasa, botones, D-Pad).
+
+Estilizado de la pantalla tipo LCD Game Boy Advance.
+
+Uso de flexbox, grid, sombras, gradientes y clip-path.
+
+Tipografía retro
+Estilo pixel-art para simular interfaces de consolas clásicas.
+
+🌐 API
+
+PokéAPI
+API pública utilizada para obtener:
+
+Datos del Pokémon
+
+Sprite frontal
+
+Estadísticas base (stats)
+
+⚙️ Herramientas de desarrollo
+
+Vite
+Entorno de desarrollo rápido para proyectos con React.
+
+Git / GitHub
+Control de versiones y gestión del proyecto.
+
+🧩 Arquitectura del proyecto
+
+Separación clara entre lógica y presentación
+
+La lógica de consumo de API y estado vive en componentes de React.
+
+La carcasa del Pokédex es puramente visual (UI).
+
+Componentización
+
+LCD (pantalla)
+
+Shell del Pokédex
+
+Controles físicos (D-Pad, botones)
+
+Sin librerías externas de UI
+
+Todo el diseño fue construido manualmente con CSS puro y duro.
+
+🎯 Objetivo del proyecto
+
+Practicar consumo de APIs REST.
+
+Reforzar arquitectura de componentes en React.
+
+Diseñar una interfaz compleja solo con HTML + CSS.
+
+Crear una pieza visualmente distintiva para portafolio.
+
+📌 Estado del proyecto
+
+✅ Funcional
+✅ Consumo de API estable
+✅ UI retro completa
+🚧 Abierto a mejoras visuales y animaciones
+
+USAR npm install -> npm run dev
