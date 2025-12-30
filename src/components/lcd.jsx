@@ -31,6 +31,38 @@ export default function LCD({ pokemon, loading, error, query, setQuery }) {
         )}
       </div>
 
+      {!loading && !error && pokemon && (
+        <div className="pokemonInfo">
+          <div className="infoRow">
+            <span className="infoLabel">ALT:</span>
+            <span className="infoValue">
+              {(pokemon.height / 10).toFixed(1)}m
+            </span>
+          </div>
+          <div className="infoRow">
+            <span className="infoLabel">PES:</span>
+            <span className="infoValue">
+              {(pokemon.weight / 10).toFixed(1)}kg
+            </span>
+          </div>
+          <div className="infoRow">
+            <span className="infoLabel">TIP:</span>
+            <span className="infoValue">
+              {pokemon.types.map((t) => t.type.name.toUpperCase()).join("/")}
+            </span>
+          </div>
+          <div className="infoRow">
+            <span className="infoLabel">MOV:</span>
+            <span className="infoValue">
+              {pokemon.moves
+                .slice(0, 2)
+                .map((m) => m.move.name.toUpperCase())
+                .join("/")}
+            </span>
+          </div>
+        </div>
+      )}
+
       <div className="lcdFooter">
         <input
           className="lcdInput"

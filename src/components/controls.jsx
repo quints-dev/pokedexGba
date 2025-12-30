@@ -1,9 +1,12 @@
-import { useState } from "react";
 import { getPokemon } from "../services/pokeApi";
 
-export default function Controls({ setPokemon, setLoading, setError }) {
-  const [query, setQuery] = useState("");
-
+export default function Controls({
+  setPokemon,
+  setLoading,
+  setError,
+  query,
+  setQuery,
+}) {
   const handleSearch = async () => {
     if (!query) return;
 
@@ -20,18 +23,25 @@ export default function Controls({ setPokemon, setLoading, setError }) {
     }
   };
 
+  const handleReset = () => {
+    setQuery("");
+    setPokemon(null);
+    setError("");
+  };
+
   return (
     <div className="controls">
-      <input
-        type="text"
-        placeholder="Buscar"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-      />
-
-      <button onClick={handleSearch} disabled={!query}>
-        A
+      <div className="dpad" onClick={handleReset} title="Reiniciar">
+        <div className="v"></div>
+        <div className="h"></div>
+      </div>
+      <button
+        className="bigBlue"
+        onClick={handleSearch}
+        disabled={!query}
+        title="Buscar"
+      >
+        Buscar
       </button>
     </div>
   );
